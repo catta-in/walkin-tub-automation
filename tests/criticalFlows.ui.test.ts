@@ -20,7 +20,7 @@ const TEST_DATA = {
     },
     invalidEmails: ['johndoe.com', 'john@', 'john@@example.com', ''],
     validEmail: 'john.doe@example.com',
-    invalidPhones: ['123', '23456789012', '234567890a', '', '0123456789'],
+    invalidPhones: ['123', '1234567890', '23456789012', '234567890a', '', '0123456789'],
     validPhone: '5551234567',
     expectedTexts: {
         thankYou: 'Thank you!',
