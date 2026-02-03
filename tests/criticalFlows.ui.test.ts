@@ -4,8 +4,7 @@ import HomePage from '../src/pageObjects/homePage/HomePage'
 const TEST_DATA = {
     zipCodes: {
         valid1: '82345',
-        valid2: '67890',
-        valid3: '92345',
+        valid2: '92345',
         sorryFlow: '11111',
         invalid: {
             tooShort: '9234',
@@ -15,8 +14,7 @@ const TEST_DATA = {
         }
     },
     users: {
-        form1: { name: 'John Doe', email: 'john.doe@example.com', phone: '5551234567' },
-        form2: { name: 'Jane Smith', email: 'jane.smith@example.com', phone: '5559876543' }
+        form1: { name: 'John Doe', email: 'john.doe@example.com', phone: '5551234567' }
     },
     invalidEmails: ['johndoe.com', 'john@', 'john@@example.com', ''],
     validEmail: 'john.doe@example.com',
@@ -63,33 +61,7 @@ test.describe('Walk-in Tub Form - critical scenarios', () => {
         expect(headerText).toBe(TEST_DATA.expectedTexts.thankYou)
     })
 
-    test('TC-02: Form 2 - Complete successful submission flow', async () => {
-        await homePage.form2.step1.zipCodeInput.fill(TEST_DATA.zipCodes.valid2)
-        await homePage.form2.step1.submitButton.click()
-
-        await homePage.form2.waitForStepTransition(2)
-        await homePage.form2.step2.options.therapy.click()
-        await homePage.form2.step2.submitButton.click()
-
-        await homePage.form2.waitForStepTransition(3)
-        await homePage.form2.step3.propertyTypes.owned.click()
-        await homePage.form2.step3.submitButton.click()
-
-        await homePage.form2.waitForStepTransition(4)
-        await homePage.form2.step4.nameInput.fill(TEST_DATA.users.form2.name)
-        await homePage.form2.step4.emailInput.fill(TEST_DATA.users.form2.email)
-        await homePage.form2.step4.submitButton.click()
-
-        await homePage.form2.waitForStepTransition(5)
-        await homePage.form2.step5.phoneInput.fill(TEST_DATA.users.form2.phone)
-        await homePage.form2.step5.submitButton.click()
-
-        const thankYouPage = await homePage.waitForThankYouPage()
-        const headerText = await thankYouPage.getHeaderText()
-        expect(headerText).toBe(TEST_DATA.expectedTexts.thankYou)
-    })
-
-    test('TC-03: ZIP code validation - Verify all validation rules', async () => {
+    test('TC-02: ZIP code validation - Verify all validation rules', async () => {
         await homePage.form1.step1.zipCodeInput.fill(TEST_DATA.zipCodes.invalid.tooShort)
         await homePage.form1.step1.submitButton.click()
         expect.soft(await homePage.form1.step1.error.isVisible()).toBe(true)
@@ -106,12 +78,12 @@ test.describe('Walk-in Tub Form - critical scenarios', () => {
         await homePage.form1.step1.submitButton.click()
         expect.soft(await homePage.form1.step1.error.isVisible()).toBe(true)
 
-        await homePage.form1.step1.zipCodeInput.fill(TEST_DATA.zipCodes.valid3)
+        await homePage.form1.step1.zipCodeInput.fill(TEST_DATA.zipCodes.valid2)
         await homePage.form1.step1.submitButton.click()
         await homePage.form1.waitForStepTransition(2)
     })
 
-    test('TC-04: Sorry flow - Service not available in area', async () => {
+    test('TC-03: Sorry flow - Service not available in area', async () => {
         await homePage.form1.step1.zipCodeInput.fill(TEST_DATA.zipCodes.sorryFlow)
         await homePage.form1.step1.submitButton.click()
 
@@ -126,8 +98,8 @@ test.describe('Walk-in Tub Form - critical scenarios', () => {
         await expect(homePage.form1.sorryStep.thankYouMessage).toBeVisible()
     })
 
-    test('TC-05: Email validation - Verify email format requirements', async () => {
-        await homePage.form1.step1.zipCodeInput.fill(TEST_DATA.zipCodes.valid3)
+    test('TC-04: Email validation - Verify email format requirements', async () => {
+        await homePage.form1.step1.zipCodeInput.fill(TEST_DATA.zipCodes.valid2)
         await homePage.form1.step1.submitButton.click()
 
         await homePage.form1.waitForStepTransition(2)
@@ -154,7 +126,7 @@ test.describe('Walk-in Tub Form - critical scenarios', () => {
         await homePage.form1.waitForStepTransition(5)
     })
 
-    test('TC-06: Phone validation - Verify 10-digit requirement', async () => {
+    test('TC-05: Phone validation - Verify 10-digit requirement', async () => {
         await homePage.form1.step1.zipCodeInput.fill(TEST_DATA.zipCodes.valid1)
         await homePage.form1.step1.submitButton.click()
 

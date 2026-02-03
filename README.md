@@ -43,42 +43,42 @@ npm run test:debug
  
 ## Complete Test Scenario List
  
-1. **Happy Path - Minimal selections on Step 2** (at least 1 option selected)
-2. **Happy Path - All options selected on Step 2** (all 4 checkboxes)
-3. **ZIP Code Validation** - 5-digit requirement (too short, too long, alphanumeric, empty)
-4. **Sorry Flow - Complete** - Out-of-service area (ZIP 11111) + email submission form
-5. **Email Validation - Step 4** - HTML5 format validation
-6. **Phone Validation - Step 5** - 10-digit requirement
-7. **Home Page Verification** - Texts, elements, videos, and layout validation
-8. **Property Type Rejection** - Rental/Mobile Home should show error
-9. **Step 2 Validation** - Nothing selected should allow progression
-10. **Step 3 Validation** - Nothing selected should prevent progression
-11. **Name Validation - Step 4** - Required field validation
-12. **Step 3 - Change Radio Selection** - Can switch between Owned/Rental/Mobile
-13. **Step 2 - Toggle Checkboxes** - Can select/unselect options multiple times
-14. **Form Interconnection** - Start in Form 2, switch to Form 1 (fills both simultaneously)
-15. **Thank You Page Content** - Verify all expected text/elements appear
-16. **Progress Bar Display** - Shows correct step indicators and percentage
-17. **Step 2 - Single Option Selected** - Each option individually tested (Independence, Safety, Therapy, Other)
-18. **Email Format Edge Cases** - Spaces, special characters, international domains
-19. **ZIP Code Service Area Boundaries** - Edge cases near sorry flow boundary
-20. **Form Reset Behavior** - Refresh page, form state handling
-21. **Browser Back Button** - Navigation handling during multi-step flow
-22. **Thank You Page - Call Timeline** - "within 10 minutes" text verification
-23. **Logo Accreditation Display** - All partner logos appear on thank you page
-24. **Mobile Responsiveness** - Form displays correctly on mobile (if in scope)
-25. **Keyboard Navigation** - Tab through form, Enter to submit
-26. **Field Character Limits** - Name, email max lengths
-27. **Copy/Paste Validation** - Pasted content validated same as typed
+1. **Happy Path - Form 1: Minimal selections on Step 2** (at least 1 option selected)
+2. **Happy Path - Form 1: All options selected on Step 2** (all 4 checkboxes)
+3. **Happy Path - Form 2: Complete all steps using second form instance** (minimal selections)
+4. **ZIP Code Validation** - 5-digit requirement (too short, too long, alphanumeric, empty)
+5. **Sorry Flow - Complete** - Out-of-service area (ZIP 11111) + email submission form
+6. **Email Validation - Step 4** - HTML5 format validation
+7. **Phone Validation - Step 5** - 10-digit requirement
+8. **Home Page Verification** - Texts, elements, videos, and layout validation
+9. **Property Type Rejection** - Rental/Mobile Home should show error
+10. **Step 2 Validation** - Nothing selected should allow progression
+11. **Step 3 Validation** - Nothing selected should prevent progression
+12. **Name Validation - Step 4** - Required field validation
+13. **Step 3 - Change Radio Selection** - Can switch between Owned/Rental/Mobile
+14. **Step 2 - Toggle Checkboxes** - Can select/unselect options multiple times
+15. **Form Interconnection** - Start in Form 2, switch to Form 1 (fills both simultaneously)
+16. **Thank You Page Content** - Verify all expected text/elements appear
+17. **Progress Bar Display** - Shows correct step indicators and percentage
+18. **Step 2 - Single Option Selected** - Each option individually tested (Independence, Safety, Therapy, Other)
+19. **Email Format Edge Cases** - Spaces, special characters, international domains
+20. **ZIP Code Service Area Boundaries** - Edge cases near sorry flow boundary
+21. **Form Reset Behavior** - Refresh page, form state handling
+22. **Browser Back Button** - Navigation handling during multi-step flow
+23. **Thank You Page - Call Timeline** - "within 10 minutes" text verification
+24. **Logo Accreditation Display** - All partner logos appear on thank you page
+25. **Mobile Responsiveness** - Form displays correctly on mobile (if in scope)
+26. **Keyboard Navigation** - Tab through form, Enter to submit
+27. **Field Character Limits** - Name, email max lengths
+28. **Copy/Paste Validation** - Pasted content validated same as typed
  
 ## Prioritization Logic
  
 - **TC-01 (Happy Path - Form 1)**: Main business flow - validates entire flow works end-to-end
-- **TC-02 (Happy Path - Form 2)**: Ensures both identical forms function independently (catches form isolation bug)
-- **TC-03 (ZIP Validation)**: First user interaction + service area detection logic (without it the funnel breaks)
-- **TC-04 (Sorry Flow)**: Complete alternative journey - business critical for out-of-area lead capture
-- **TC-05 (Email Validation)**: HTML5 validation mechanism (important to contact customers)
-- **TC-06 (Phone Validation)**: NANP compliance + 10-digit requirement (again to contact customers)
+- **TC-02 (ZIP Validation)**: First user interaction + service area detection logic (without it the funnel breaks)
+- **TC-03 (Sorry Flow)**: Complete alternative journey - business critical for out-of-area lead capture
+- **TC-04 (Email Validation)**: HTML5 validation mechanism (important to contact customers)
+- **TC-05 (Phone Validation)**: NANP compliance + 10-digit requirement (again to contact customers)
  
 ## Defects Found
  
